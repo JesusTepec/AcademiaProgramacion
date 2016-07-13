@@ -1,0 +1,13 @@
+{% extends "General/Base.html" %}
+
+{% block Titulo %}
+<span class="fa fa-windows"> Principal</span>
+{% endblock Titulo %}
+
+{% block Contenido %}
+{% include 'Principal/Principal.html' %}
+{% endblock Contenido %}
+
+{% block ScriptsAplicacion %}
+{% include 'Principal/Partes/JsPrincipal.html' %}
+{% endblock ScriptsAplicacion %}

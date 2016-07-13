@@ -1,0 +1,10 @@
+{
+	"Configuracion" : {
+		"Activo" : true
+	},
+	"Modulos" : {
+		"Administrador" : true,
+		"Error" : true,
+		"Central" : true
+	}
+}

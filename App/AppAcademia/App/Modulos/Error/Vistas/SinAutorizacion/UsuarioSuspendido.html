@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<title>AbsoluteAdmin - A Responsive Bootstrap 3 Admin Dashboard Template</title>
+	<meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
+	<meta name="description" content="AbsoluteAdmin - A Responsive HTML5 Admin UI Framework">
+	<meta name="author" content="AbsoluteAdmin">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Font CSS (Via CDN) -->
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="{{NeuralRutaWebPublico}}/assets/skin/default_skin/css/theme.css">
+
+	<!-- Admin Forms CSS -->
+	<link rel="stylesheet" type="text/css" href="{{NeuralRutaWebPublico}}/assets/admin-tools/admin-forms/css/admin-forms.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{NeuralRutaWebPublico}}/assets/img/favicon.ico">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body class="external-page sb-l-c sb-r-c">
+<div id="main" class="animated fadeIn">
+
+	<section id="content_wrapper">
+
+		<div id="canvas-wrapper">
+			<canvas id="demo-canvas"></canvas>
+		</div>
+
+
+		<section id="content">
+
+			<div class="admin-form theme-info mw700" style="margin-top: 3%;" id="register">
+
+				<div class="row table-layout">
+					<a href="dashboard.html" title="Return to Dashboard">
+						<img src="{{NeuralRutaWebPublico}}/assets/img/logos/logo_header.png" class="center-block img-responsive" style="max-width: 275px;">
+					</a>
+				</div>
+
+				<div class="panel panel-info mt10 br-n">
+
+					<form method="POST" id="frm_Recuperacion" name="frm_Recuperacion">
+						<div class="panel-body p25 bg-light">
+
+							<div class="section row p10 ph15">
+								<h3>Error de Acceso</h3>
+								<p>El usuario con el que intenta acceder actualmente se encuentra suspendido.</p>
+								<br><br>
+								<h6><span class="label label-info">Información</span> &nbsp; Si presenta algún problema con el el acceso comuníquese con el administrador de la red.</h6>
+							</div>
+
+						</div>
+
+						<div class="panel-footer clearfix">
+
+						</div>
+
+					</form>
+				</div>
+
+				<div class="login-links">
+					<p>Ya se encuentra Registrado?
+						<a href="{{NeuralRutaApp}}/Index" class="active">Ingrese aquí</a>
+					</p>
+				</div>
+
+
+			</div>
+
+		</section>
+	</section>
+</div>
+
+<!-- jQuery -->
+<script src="{{NeuralRutaWebPublico}}/vendor/jquery/jquery-1.11.1.min.js"></script>
+<script src="{{NeuralRutaWebPublico}}/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+
+<!-- CanvasBG Plugin(creates mousehover effect) -->
+<script src="{{NeuralRutaWebPublico}}/vendor/plugins/canvasbg/canvasbg.js"></script>
+
+<!-- Theme Javascript -->
+<script src="{{NeuralRutaWebPublico}}/assets/js/utility/utility.js"></script>
+<script src="{{NeuralRutaWebPublico}}/assets/js/demo/demo.js"></script>
+<script src="{{NeuralRutaWebPublico}}/assets/js/main.js"></script>
+
+<!-- Page Javascript -->
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		"use strict";
+		Core.init();
+		CanvasBG.init({
+			Loc: {
+				x: window.innerWidth / 2,
+				y: window.innerHeight / 3.3
+			},
+		});
+	});
+</script>
+</body>
+</html>
