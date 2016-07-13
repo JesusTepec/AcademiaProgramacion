@@ -5414,7 +5414,7 @@ footer {
 
     width: 100%;
     border-top: 1px solid #00C6D7;
-    position: fixed;
+    /*position: fixed;*/    
     bottom: 0;
 }
 footer p{
