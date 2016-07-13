@@ -18,16 +18,16 @@
 	"AppAcademia": {
 		"Doctrine" : {
 			"dbname" : "academia_db",
-			"user" : "root",
-			"password" : "",
+			"user" : "academia_db",
+			"password" : "academia_db",
 			"host" : "localhost",
 			"driver" : "pdo_mysql",
 			"charset" : "utf8"
 		},
 		"PDO" : {
 			"dns" : "mysql:host=localhost;dbname=academia_db",
-			"user" : "root",
-			"password" : "",
+			"user" : "academia_db",
+			"password" : "academia_db",
 			"parametros" : false
 		}
 	}
