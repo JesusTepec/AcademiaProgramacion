@@ -26,7 +26,7 @@
 		 * @return ok
 		 * @return void
 		 */
-		public function Index() {			//echo hash('sha256', "1234") ;			//exit();
+		public function Index() {
 			$Validacion = new NeuralJQueryFormularioValidacion(true, true, false);
 			$Validacion->Requerido('Usuario', '* Nombre de usuario requerido');
 			$Validacion->Requerido('Password', '* Contraseña requerida');
