@@ -17,6 +17,7 @@
 		 * Metodo: Index
 		 */
 		public function Index() {
+			NeuralSesiones::Finalizar($_SESSION['UOAUTH_APP']);
 			header("Location: ".NeuralRutasApp::RutaUrlApp('Index'));
 			exit();
 		}
