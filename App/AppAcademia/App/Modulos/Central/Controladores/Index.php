@@ -34,13 +34,13 @@
 			}
 			elseif($Usuario['Permiso']['Nombre'] == 'Supervisor'){
 				unset($Usuario);
-				header("Location: ".NeuralRutasApp::RutaUrlAppModulo('Supervisor'));
+				header("Location: ".NeuralRutasApp::RutaUrlAppModulo('Instructor'));
 				exit();
 			}
 			
 			elseif($Usuario['Permiso']['Nombre'] == 'Agente'){
 				unset($Usuario);
-				header("Location: ".NeuralRutasApp::RutaUrlAppModulo('Agente'));
+				header("Location: ".NeuralRutasApp::RutaUrlAppModulo('Asistente'));
 				exit();
 			}
 
