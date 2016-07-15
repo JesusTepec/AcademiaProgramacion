@@ -91,12 +91,13 @@
 								</li>
 							</ol>
 							<!--  Contenido -->
-							<div id="AreaContenido"></div>
-							{% block Contenido %}
-							<!-- Contenido de la Aplicacion -->
+							<div id="AreaContenido">
+								{% block Contenido %}
+								<!-- Contenido de la Aplicacion -->
 
-							{% endblock Contenido %}
-							<!-- #Contenido -->
+								{% endblock Contenido %}
+								<!-- #Contenido -->
+							</div>
 
 							<!--footer section start-->
 							{% include 'General/Partes/Pie.html' %}
@@ -140,5 +141,8 @@
 		toggle = !toggle;
 	});
 </script>
+
+{% block ScriptsAplicacion %}
+{% endblock ScriptsAplicacion %}
 </body>
 </html>
