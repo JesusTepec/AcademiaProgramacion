@@ -1,6 +1,5 @@
 <script>
     function Listado(){
-        console.log("solicitando");
         $.ajax({
             type: "post",
             url: "{{NeuralRutaApp}}/Administrador/Taller/Listar",
@@ -14,5 +13,22 @@
         });
     }
 
+    function AgregarTaller(){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Taller/frmAgregar",
+            datatype: "html",
+            beforeSend: function () {
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+
+
+
     Listado();
+
 </script>
