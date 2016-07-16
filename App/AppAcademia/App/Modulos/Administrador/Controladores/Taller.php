@@ -40,10 +40,20 @@ class Taller extends Controlador {
         unset($Menu, $MenuSeleccion, $TipoUsuario, $Usuario, $Validacion, $Plantilla);
         exit();
     }
+
+    /**
+     * Metodo Publico
+     * Listar()
+     *
+     * Muestra el registro de los talleres guardados
+     * @throws NeuralException
+     */
     public function Listar(){
-        sleep(3);
+        $Consulta = $this->Modelo->ConsultarTalleres();
         $Plantilla = new NeuralPlantillasTwig(APP);
-        
+        $Plantilla->Parametro('Datos', $Consulta);
         echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Taller','Listado', 'Listado.html')));
+        unset($Consulta,$Plantilla);
     }
+
 }
