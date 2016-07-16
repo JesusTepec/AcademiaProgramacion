@@ -1,0 +1,16 @@
+<p>Llegue hasta aqui :3</p>
+<script>
+    function ListarInstructores() {
+        $.ajax({
+          url:"{{NeuralRutaApp}}/Administrador/Instructor/ConsultarInstructores",
+            type:"post",
+            datatype:"html",
+            success:function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+    ListarInstructores();
+
+</script>
+<p>Llegue hasta aqui :3</p>

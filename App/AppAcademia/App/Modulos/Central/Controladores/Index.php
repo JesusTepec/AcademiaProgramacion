@@ -21,10 +21,6 @@
 		 *
 		 */
 		public function Index() {
-			//Ayudas::print_r($_SESSION);
-			//Ayudas::print_r(AppSession::InfomacionSession());
-			//exit;
-
 			// -- Redireccionamiento por perfil
 			$Usuario = AppSession::InfomacionSession();
 			if($Usuario['Permiso']['Nombre'] == 'Administrador'){

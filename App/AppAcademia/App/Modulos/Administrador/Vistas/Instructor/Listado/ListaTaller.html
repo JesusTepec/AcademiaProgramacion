@@ -1,0 +1,19 @@
+<div class="graph">
+    <div class="tables">
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nombres</th> <th>Apellido Paterno</th> <th>Telefono</th> <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for Dato in Datos%}
+            <tr>
+                <td>{{Dato.Nombres}}</td> <td>{{Dato.ApellidoPaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td><td>{{Dato.Status}}</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
