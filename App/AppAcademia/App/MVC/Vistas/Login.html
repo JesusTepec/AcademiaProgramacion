@@ -50,12 +50,37 @@
 			<br>
 			<input type="hidden" id="Key" name="Key" value="{{Key}}">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+			<button class="btn btn-lg btn-success btn-block" type="submit">Nuevo Usuario</button>
 		</form>
 </div> <!-- /container -->
+<div
+		class="fb-like"
+		data-share="true"
+		data-width="450"
+		data-show-faces="true">
+</div>
+<!-- Facebook core JavaScript -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1735509063388464',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
 
-<!-- Bootstrap core JavaScript
-================================================== -->
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <!-- Placed at the end of the document so the pages load faster -->
+
+
 <script src="{{NeuralRutaWebPublico}}/assets/js/jquery.min.js"></script>
 <script src="{{NeuralRutaWebPublico}}/bootstrap/js/bootstrap.min.js"></script>
 {{Scripts|raw}}

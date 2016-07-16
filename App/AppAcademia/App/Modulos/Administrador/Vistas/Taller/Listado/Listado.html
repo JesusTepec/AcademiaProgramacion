@@ -1,6 +1,13 @@
+
+<div >
+    <a href="#" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Taller</a>
+    <br>
+    <br>
+</div>
+
 <div class="panel panel-primary">
 
-    <div class="panel-heading">Listado de Talleres</div>
+    <div class="panel-heading" align="center">LISTADO DE TALLERES</div>
     <div class="panel-body">
 
         <div class="tables">
@@ -10,7 +17,11 @@
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Horario</th>
+                    <th>Lugar</th>
+                    <th>Fecha Lanzamiento</th>
                     <th>Status</th>
+                    <th>Controles</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -19,7 +30,11 @@
                     <th scope="row">{{ loop.index }}</th>
                     <td>{{ Dato.Nombre }}</td>
                     <td>{{ Dato.Descripcion }}</td>
+                    <td>{{ Dato.Horario }}</td>
+                    <td>{{ Dato.Lugar }}</td>
+                    <td>{{ Dato.FechaCreacion }}</td>
                     <td>{{ Dato.Status }}</td>
+                    <td><a href="#">Modificar</a>/<a  href="#">Eliminar </a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -27,8 +42,5 @@
         </div>
 
     </div>
-
-
-
 </div>
 </div>
