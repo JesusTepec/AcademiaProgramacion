@@ -55,5 +55,11 @@ class Taller extends Controlador {
         echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Taller','Listado', 'Listado.html')));
         unset($Consulta,$Plantilla);
     }
+    
+    public function Desactivar($IdTaller){
+        $this->Modelo->DesativarTalleres($IdTaller);
+    }
+
+    
 
 }

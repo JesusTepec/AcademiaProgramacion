@@ -1,4 +1,3 @@
-
 <div >
     <a href="#" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Taller</a>
     <br>
@@ -34,13 +33,12 @@
                     <td>{{ Dato.Lugar }}</td>
                     <td>{{ Dato.FechaCreacion }}</td>
                     <td>{{ Dato.Status }}</td>
-                    <td><a href="#">Modificar</a>/<a  href="#">Eliminar </a></td>
+                    <td><a href="#">Modificar</a>/<a  href="{{NeuralRutaApp}}/Administrador/Taller/Desactivar/{{Dato.IdTaller}}">Desactivar </a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 </div>

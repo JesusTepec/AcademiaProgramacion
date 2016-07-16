@@ -13,7 +13,11 @@ class Taller_Modelo extends AppSQLConsultas {
     }
 
     /**
-     * Metodo: Ejemplo
+     * Metodo Publico
+     * ConsultarTalleres()
+     *
+     * Consulta y retorna los talleres activos
+     * dentro de la Base de Datos
      */
     public function ConsultarTalleres() {
         $Consulta = new NeuralBDConsultas(APP);
@@ -22,5 +26,21 @@ class Taller_Modelo extends AppSQLConsultas {
         $Consulta->Condicion("Status = 'ACTIVO'");
         $Consulta->Ordenar('IdTaller', 'DESC');
         return $Consulta->Ejecutar(false, true);
+    }
+
+    /**
+     * Metodo Publico
+     * EliminarTalleres()
+     *
+     * Elimina el registro de la Base de Datos
+     * deacuerdo a su ID
+     * @param $idTaller
+     * @throws NeuralException
+     */
+    public function DesativarTalleres($idTaller){
+        $SQL = new NeuralBDGab(APP, 'tbl_Talleres');
+        $SQL->Sentencia('Status', 'DESACTIVADO');
+        $SQL->Condicion('IdTaller', $idTaller);
+        $SQL->Actualizar();
     }
 }
