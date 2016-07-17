@@ -30,10 +30,10 @@ class Taller_Modelo extends AppSQLConsultas {
 
     /**
      * Metodo Publico
-     * EliminarTalleres()
+     * DesactivarTalleres($idTaller)
      *
-     * Elimina el registro de la Base de Datos
-     * deacuerdo a su ID
+     * Desactiva el registro de la Base de Datos
+     * deacuerdo a su ID para que ya no se muestre
      * @param $idTaller
      * @throws NeuralException
      */
