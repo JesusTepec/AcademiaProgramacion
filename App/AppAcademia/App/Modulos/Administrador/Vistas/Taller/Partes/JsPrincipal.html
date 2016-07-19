@@ -1,3 +1,4 @@
+
 <script>
     function Listado(){
         $.ajax({
@@ -25,6 +26,33 @@
                 $("#AreaContenido").html(data);
             }
         });
+    }
+    function fnDesactivar(Id){
+        swal({
+            title: "Desactivar Taller",
+            text: "El taller no estará disponible",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, Desactivar",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                type: "post",
+                url: "{{NeuralRutaApp}}/Administrador/Taller/Desactivar",
+                datatype: "html",
+                data: {IdTaller: Id},
+                beforeSend: function () {
+                    $("#AreaContenido").html('<div class="spinner"></div>');
+                },
+                success: function (data) {
+                    Listado();
+                    swal("Deleted!", "Se a Desactivado el Taller", "success");
+                }
+            });
+        });
+
     }
 
 

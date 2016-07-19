@@ -1,5 +1,5 @@
 <div >
-    <a href="#" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Taller</a>
+    <a href="javascript: AgregarTaller();" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Taller</a>
     <br>
     <br>
 </div>
@@ -33,7 +33,7 @@
                     <td>{{ Dato.Lugar }}</td>
                     <td>{{ Dato.FechaCreacion }}</td>
                     <td>{{ Dato.Status }}</td>
-                    <td><a href="#">Modificar</a>/<a  href="{{NeuralRutaApp}}/Administrador/Taller/Desactivar/{{Dato.IdTaller}}">Desactivar </a></td>
+                    <td><a href="#">Modificar</a>/<a  onclick="javascript: fnDesactivar('{{Dato.IdTaller}}')">Desactivar </a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
