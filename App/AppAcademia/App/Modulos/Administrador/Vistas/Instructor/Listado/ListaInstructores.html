@@ -18,7 +18,7 @@
         <table class="table table-bordered" id="TablaBuscar">
             <thead>
             <tr><center>
-                <th>Nombre</th> <th>Telefono</th> <th>Correo</th> <th>Estado</th>
+                <th>Nombre</th> <th>Telefono</th> <th>Correo</th> <th>Estado</th><th>Controles</th>
             </center>
             </tr>
             </thead>
@@ -26,6 +26,7 @@
             {%for Dato in Datos%}
             <tr>
                 <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td> <td>{{Dato.Correo}}</td><td>{{Dato.Status}}</td>
+                <td><a onclick="javascript: fnCambiarPerfil('{{Dato.IdUsuario}}')">Cambiar Perfil </a></td>
             </tr>
             {%endfor%}
             </tbody>

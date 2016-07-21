@@ -53,7 +53,7 @@
         }
         
         /**
-         * Método publico
+         * Mï¿½todo publico
          * frmAgregar()
          * 
          * Muestra una lista de asistentes activos que pueden ser instructores
@@ -67,13 +67,17 @@
         }
         
         /**
-         * Método publico
+         * Mï¿½todo publico
          * ConvertirInstructor()
          * 
-         * Recibe el Id de un asistente, el cual se convertirá en instructor
+         * Recibe el Id de un asistente, el cual se convertirï¿½ en instructor
          * */
         public function ConvertirInstructor(){
             $this->Modelo->ConvertirAsistenteInstructor($_POST['IdUsuario']);
+        }
+
+        public function CambiarPerfil(){
+            $this->Modelo->CambiaPerfil($_POST['IdUsuario']);
         }
 
     }

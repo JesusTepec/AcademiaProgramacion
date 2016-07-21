@@ -1,4 +1,33 @@
 <script>
+
+    function fnCambiarPerfil(Id){
+        swal({
+            title: "Desactivar Taller",
+            text: "El taller no estará disponible",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, Desactivar",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                type: "post",
+                url: "{{NeuralRutaApp}}/Administrador/Instructor/CambiarPerfil",
+                datatype: "html",
+                data: {IdUsuario: Id},
+                beforeSend: function () {
+                    $("#AreaContenido").html('<div class="spinner"></div>');
+                },
+                success: function (data) {
+                    ListarInstructores();
+                    swal("Desactivado!", "Se a cambiado el permiso el Taller", "success");
+                }
+            });
+        });
+
+    }
+
     function HacerBusqueda()
 		{
 			var tableReg = document.getElementById('TablaBuscar');
@@ -51,6 +80,8 @@
             }
         });
     }
+
+
     
     function fnInstructor(Id,Nombre){
         Nombre=Nombre.toUpperCase();

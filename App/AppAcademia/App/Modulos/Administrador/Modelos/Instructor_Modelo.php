@@ -22,7 +22,7 @@ class Instructor_Modelo extends Modelo {
     public function ConsultarInstructores() {
         $Consulta = new NeuralBDConsultas(APP);
         $Consulta->Tabla('tbl_sistema_usuarios');
-        $Consulta->Columnas("Nombres,ApellidoPaterno,ApellidoMaterno,TelefonoMovil1,Correo,tbl_informacion_usuarios.Status");
+        $Consulta->Columnas("tbl_sistema_usuarios.IdUsuario,Nombres,ApellidoPaterno,ApellidoMaterno,TelefonoMovil1,Correo,tbl_informacion_usuarios.Status");
         $Consulta->InnerJoin('tbl_informacion_usuarios', 'tbl_sistema_usuarios.IdUsuario', 'tbl_informacion_usuarios.IdUsuario');
         $Consulta->InnerJoin('tbl_sistema_usuarios_perfil', 'tbl_sistema_usuarios.IdPerfil', 'tbl_sistema_usuarios_perfil.IdPerfil');
         $Consulta->Condicion("tbl_sistema_usuarios_perfil.IdPerfil = '2'");
@@ -62,4 +62,14 @@ class Instructor_Modelo extends Modelo {
             $SQL->Actualizar();
         }
     }
+
+    public function CambiaPerfil($IdUsuario = false){
+        if($IdUsuario == true and $IdUsuario != ""){
+            $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');
+            $SQL->Sentencia('IdPerfil', '3');
+            $SQL->Condicion('IdUsuario', $IdUsuario);
+            $SQL->Actualizar();
+        }
+    }
+
 }
