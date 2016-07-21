@@ -1,0 +1,48 @@
+<style>
+    table th {
+      text-align: center;
+    }
+    table td{
+        text-align: center;
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading" align="center">LISTADO DE ASISTENTES QUE SE PUEDEN CONVERTIR EN INSTRUCTORES</div>
+    <div class="panel-body">
+        <div class="row">
+<div class="col-lg-12">
+        <form>
+            <center><i class="glyphicon glyphicon-question-sign"></i> BUSCAR </center> <input class="col-lg-12" id="Buscar" type="text" onkeyup="HacerBusqueda()"  placeholder="Buscar"/>
+            
+        </form>
+        <br />
+        <br />
+    </div>
+        <div class="form-group">
+        <div class="tables" >
+            <table class="table table-bordered" id="TablaBuscar" >
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Opciones</th>  
+                </tr>
+                </thead>
+                <tbody>
+                {% for Dato in DatosAsistentes %}
+                <tr class="active">
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{Dato.Nombres}}</td>
+                    <td>
+                        <a  onclick="javascript: fnInstructor('{{Dato.IdUsuario}}','{{Dato.Nombres}}')" class="btn green">Confirmar </a>
+                        <a href="javascript:ListarInstructores();" class="btn red">Cancelar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+           </table>   
+        </div>
+        </div>
+        </div>
+    </div>
+</div>

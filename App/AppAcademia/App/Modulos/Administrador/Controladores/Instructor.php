@@ -40,17 +40,40 @@
 
         /**
          * Metodo publico
-         * ConsultarTalleres
-         * Realiza la consulta de los talleres activos
+         * ConsultarInstructores
+         * Realiza la consulta de los instructores activos
          *
          */
         public function ConsultarInstructores(){
             $Datos = $this->Modelo->ConsultarInstructores();
             $Plantilla = new NeuralPlantillasTwig(APP);
             $Plantilla->Parametro('Datos',$Datos);
-            echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor','Listado','ListaTaller.html')));
+            echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor','Listado','ListaInstructores.html')));
+            unset($Datos,$Plantilla);
         }
-
-
+        
+        /**
+         * Método publico
+         * frmAgregar()
+         * 
+         * Muestra una lista de asistentes activos que pueden ser instructores
+         * */
+        public function frmAgregar(){
+            $ConsultaAsitentes = $this->Modelo->ConsultarAsistentes();
+            $Plantilla = new NeuralPlantillasTwig(APP);
+            $Plantilla->Parametro('DatosAsistentes', $ConsultaAsitentes);
+            echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Agregar', 'AgregarInstructor.html')));
+            unset($ConsultaAsitentes,$Plantilla);
+        }
+        
+        /**
+         * Método publico
+         * ConvertirInstructor()
+         * 
+         * Recibe el Id de un asistente, el cual se convertirá en instructor
+         * */
+        public function ConvertirInstructor(){
+            $this->Modelo->ConvertirAsistenteInstructor($_POST['IdUsuario']);
+        }
 
     }

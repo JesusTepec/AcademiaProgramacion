@@ -1,5 +1,31 @@
-<p>Llegue hasta aqui :3</p>
 <script>
+    function HacerBusqueda()
+		{
+			var tableReg = document.getElementById('TablaBuscar');
+			var searchText = document.getElementById('Buscar').value.toLowerCase();
+			var cellsOfRow="";
+			var found=false;
+			var compareWith="";
+			for (var i = 1; i < tableReg.rows.length; i++)
+			{
+				cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+				found = false;
+				for (var j = 0; j < cellsOfRow.length && !found; j++)
+				{
+					compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+					if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+					{
+						found = true;
+					}
+				}
+				if(found)
+				{
+					tableReg.rows[i].style.display = '';
+				} else {
+					tableReg.rows[i].style.display = 'none';
+				}
+			}
+		}
     function ListarInstructores() {
         $.ajax({
           url:"{{NeuralRutaApp}}/Administrador/Instructor/ConsultarInstructores",
@@ -11,6 +37,49 @@
         });
     }
     ListarInstructores();
+    
+    function AgregarInstructor(){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Instructor/frmAgregar",
+            datatype: "html",
+            beforeSend: function () {
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+    
+    function fnInstructor(Id,Nombre){
+        Nombre=Nombre.toUpperCase();
+        var a='"'.concat(Nombre,'" Cambio De Asistente A Instructor')
+        swal({
+            title: "Instructor",
+            text: "El Asistente ".concat('"',Nombre,'" se convertir\u00E1 en Instructor'),
+            type: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#3ADF00",
+            confirmButtonText: "Si, Convertir ahora",
+            cancelButtonText:"Cancelar",
+            closeOnConfirm: false
+        }, function () {
 
+            $.ajax({
+                type: "post",
+                url: "{{NeuralRutaApp}}/Administrador/Instructor/ConvertirInstructor",
+                datatype: "html",
+                data: {IdUsuario: Id},
+                beforeSend: function () {
+                    $("#AreaContenido").html('<div class="spinner"></div>');
+                },
+                success: function (data) {
+                    ListarInstructores();
+                    swal("Felicidades!", a, "success");
+                }
+            });
+        });
+
+    }
 </script>
-<p>Llegue hasta aqui :3</p>
