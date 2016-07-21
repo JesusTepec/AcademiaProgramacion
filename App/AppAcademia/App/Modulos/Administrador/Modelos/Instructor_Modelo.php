@@ -22,10 +22,10 @@ class Instructor_Modelo extends Modelo {
     public function ConsultarInstructores() {
         $Consulta = new NeuralBDConsultas(APP);
         $Consulta->Tabla('tbl_sistema_usuarios');
-        $Consulta->Columnas("Nombres,ApellidoPaterno,TelefonoMovil1,tbl_informacion_usuarios.Status");
+        $Consulta->Columnas("Nombres,ApellidoPaterno,ApellidoMaterno,TelefonoMovil1,Correo,tbl_informacion_usuarios.Status");
         $Consulta->InnerJoin('tbl_informacion_usuarios', 'tbl_sistema_usuarios.IdUsuario', 'tbl_informacion_usuarios.IdUsuario');
         $Consulta->InnerJoin('tbl_sistema_usuarios_perfil', 'tbl_sistema_usuarios.IdPerfil', 'tbl_sistema_usuarios_perfil.IdPerfil');
-        $Consulta->Condicion("tbl_sistema_usuarios_perfil.Nombre = 'Instructor'");
+        $Consulta->Condicion("tbl_sistema_usuarios_perfil.IdPerfil = '2'");
         $Consulta->Condicion("tbl_sistema_usuarios.Status = 'Activo'");
         return $Consulta->Ejecutar(false,true);
     }

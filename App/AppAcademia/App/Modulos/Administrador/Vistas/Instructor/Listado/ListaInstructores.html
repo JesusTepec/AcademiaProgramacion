@@ -17,14 +17,15 @@
 
         <table class="table table-bordered" id="TablaBuscar">
             <thead>
-            <tr>
-                <th>Nombres</th> <th>Apellido Paterno</th> <th>Telefono</th> <th>Estado</th>
+            <tr><center>
+                <th>Nombre</th> <th>Telefono</th> <th>Correo</th> <th>Estado</th>
+            </center>
             </tr>
             </thead>
             <tbody>
             {%for Dato in Datos%}
             <tr>
-                <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}}</td> <td>{{Dato.ApellidoPaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td><td>{{Dato.Status}}</td>
+                <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td> <td>{{Dato.Correo}}</td><td>{{Dato.Status}}</td>
             </tr>
             {%endfor%}
             </tbody>
