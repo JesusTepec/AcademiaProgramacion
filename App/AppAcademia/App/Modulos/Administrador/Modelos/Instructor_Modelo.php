@@ -63,6 +63,13 @@ class Instructor_Modelo extends Modelo {
         }
     }
 
+    /**
+     * @param bool $IdUsuario
+     * Metodo Publico
+     * Cambia el perfil del usuario 'Instructor' a 3(Asistente)
+     * recibiendo el ID del usuario a cambiar
+     */
+
     public function CambiaPerfil($IdUsuario = false){
         if($IdUsuario == true and $IdUsuario != ""){
             $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');

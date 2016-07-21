@@ -2,12 +2,12 @@
 
     function fnCambiarPerfil(Id){
         swal({
-            title: "Desactivar Taller",
-            text: "El taller no estará disponible",
+            title: "Cambiar Perfil a Asistente",
+            text: "El usuario seleccionado ahora será sólo asistente",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Si, Desactivar",
+            confirmButtonText: "Si, Cambiar Permiso",
             closeOnConfirm: false
         }, function () {
 
@@ -21,7 +21,7 @@
                 },
                 success: function (data) {
                     ListarInstructores();
-                    swal("Desactivado!", "Se a cambiado el permiso el Taller", "success");
+                    swal("Desactivado!", "Se a cambiado el permiso del usuario", "success");
                 }
             });
         });

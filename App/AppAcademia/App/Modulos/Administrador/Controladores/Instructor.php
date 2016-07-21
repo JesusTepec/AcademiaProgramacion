@@ -76,6 +76,13 @@
             $this->Modelo->ConvertirAsistenteInstructor($_POST['IdUsuario']);
         }
 
+        /**
+         * Metodo publico
+         * CambiarPerfil()
+         *
+         * Recibe el Id de un Instructor, invoca al metodo del modelo
+         * donde se realiza el update a sólo asistente
+         */
         public function CambiarPerfil(){
             $this->Modelo->CambiaPerfil($_POST['IdUsuario']);
         }
