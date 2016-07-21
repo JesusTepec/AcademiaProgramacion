@@ -23,6 +23,7 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
+                    <th>Instructor</th>
                     <th>Descripcion</th>
                     <th>Periodo</th>
                     <th>Horario</th>
@@ -37,6 +38,7 @@
                 <tr class="active">
                     <th scope="row">{{ loop.index }}</th>
                     <td>{{ Dato.Nombre }}</td>
+                    <td>{{ Dato.nmInfUsuario }} {{ Dato.apPInfUsuario }} {{ Dato.apMInfUsuario }}</td>
                     <td>{{ Dato.Descripcion }}</td>
                     <td>{{ Dato.nmPeriodo }}</td>
                     <td>{{ Dato.Horario }}</td>
