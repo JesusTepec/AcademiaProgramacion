@@ -1,5 +1,6 @@
-<div >
-    <a href="javascript: AgregarTaller();" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Taller</a>
+<div>
+    <a href="javascript: AgregarTaller();" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar
+        un Nuevo Taller</a>
     <br>
     <br>
 </div>
@@ -7,15 +8,23 @@
 <div class="panel panel-primary">
 
     <div class="panel-heading" align="center">LISTADO DE TALLERES</div>
+
+    <div class="col-lg-12">
+            <center><i class="glyphicon glyphicon-question-sign"></i> BUSCAR </center> <input class="col-lg-12" id="Buscar" type="text" onkeyup="HacerBusqueda()" placeholder="Buscar"/>
+        <br />
+        <br />
+    </div>
+
     <div class="panel-body">
 
         <div class="tables">
-            <table class="table">
+            <table class="table" id="TablaBuscar">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Periodo</th>
                     <th>Horario</th>
                     <th>Lugar</th>
                     <th>Fecha Lanzamiento</th>
@@ -29,16 +38,57 @@
                     <th scope="row">{{ loop.index }}</th>
                     <td>{{ Dato.Nombre }}</td>
                     <td>{{ Dato.Descripcion }}</td>
+                    <td>{{ Dato.nmPeriodo }}</td>
                     <td>{{ Dato.Horario }}</td>
                     <td>{{ Dato.Lugar }}</td>
                     <td>{{ Dato.FechaCreacion }}</td>
                     <td>{{ Dato.Status }}</td>
-                    <td><a href="#">Modificar</a>/<a  onclick="javascript: fnDesactivar('{{Dato.IdTaller}}')">Desactivar </a></td>
+                    <td><a data-toggle="modal" data-target="#frmModalModificar">Modificar</a>/<a
+                            onclick="javascript: fnDesactivar('{{Dato.IdTaller}}')">Desactivar </a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="frmModalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Información del Taller</h2>
+                </div>
+                <form id="ActualizarDatos">
+                    <div class="vali-form">
+                        <div class="col-md-12 form-group1">
+                            <label class="control-label">Nombre del taller:</label>
+                            <input type="text" placeholder="Nombre" required="">
+                        </div>
+                        <div class="col-md-12 form-group1 ">
+                            <label class="control-label">Descripción:</label>
+                            <textarea placeholder="Descripción del taller" required=""></textarea>
+                        </div>
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Horario:</label>
+                            <input type="text" placeholder="Horario" required="">
+                        </div>
+                        <div class="col-md-6 form-group1">
+                            <label class="control-label">Lugar:</label>
+                            <input type="text" placeholder="Lugar" required="">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div align="center">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success">Actualizar Datos</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div>
+    <!---->
 </div>
-</div>
+

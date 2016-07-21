@@ -55,15 +55,31 @@ class Taller extends Controlador {
         echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Taller', 'Listado', 'Listado.html')));
         unset($Consulta,$Plantilla);
     }
-    
+    /**
+     * Metodo Publico
+     * Desactivar()
+     *
+     * Desactiva un taller para que este ya no se siga mostrando en la Tabla
+     *
+     */
     public function Desactivar(){
-        //validar existencia, no vacio, cifrar el id, y decifrar
-        $this->Modelo->DesativarTalleres($_POST['IdTaller']);
+        if($_POST['IdTaller']== true and $_POST['IdTaller'] != "") {
+            //validar existencia, no vacio, cifrar el id, y decifrar
+            $this->Modelo->DesativarTalleres($_POST['IdTaller']);
+        }
     }
 
+    /**
+     * Metodo Publico
+     * frmAgregar()
+     *
+     * muestra la vista para agregar con informacion de periodo y instructores
+     *
+     * @throws NeuralException
+     */
     public function frmAgregar(){
-        $ConsultaPeriodo = $this->Modelo->CosultaPeriodo();
-        $ConsultaInstructores = $this->Modelo->CosultaInstructores();
+        $ConsultaPeriodo = $this->Modelo->ConsultaPeriodo();
+        $ConsultaInstructores = $this->Modelo->ConsultaInstructores();
         $Plantilla = new NeuralPlantillasTwig(APP);
         $Plantilla->Parametro('DatosPeriodo', $ConsultaPeriodo);
         $Plantilla->Parametro('DatosInstructores', $ConsultaInstructores);
