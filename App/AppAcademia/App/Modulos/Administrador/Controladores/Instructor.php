@@ -45,7 +45,10 @@
          *
          */
         public function ConsultarInstructores(){
-            $Datos = $this->Modelo->ConsultarInstructores();
+            $Datos = $this->Modelo->ConsultarInstructores();     
+            for($i=0;$i<count($Datos);$i++){
+                $Datos[$i]['IdUsuario']=NeuralCriptografia::Codificar($Datos[$i]['IdUsuario'],APP);
+            }
             $Plantilla = new NeuralPlantillasTwig(APP);
             $Plantilla->Parametro('Datos',$Datos);
             echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor','Listado','ListaInstructores.html')));
@@ -60,6 +63,9 @@
          * */
         public function frmAgregar(){
             $ConsultaAsitentes = $this->Modelo->ConsultarAsistentes();
+            for($i=0;$i<count($ConsultaAsitentes);$i++){
+                $ConsultaAsitentes[$i]['IdUsuario']=NeuralCriptografia::Codificar($ConsultaAsitentes[$i]['IdUsuario'],APP);
+            }            
             $Plantilla = new NeuralPlantillasTwig(APP);
             $Plantilla->Parametro('DatosAsistentes', $ConsultaAsitentes);
             echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Agregar', 'AgregarInstructor.html')));
@@ -73,7 +79,11 @@
          * Recibe el Id de un asistente, el cual se convertir� en instructor
          * */
         public function ConvertirInstructor(){
-            $this->Modelo->ConvertirAsistenteInstructor($_POST['IdUsuario']);
+            if($_POST['IdUsuario']== true AND $_POST['IdUsuario'] != "" AND isset($_POST['IdUsuario'])) {
+                if(is_numeric(NeuralCriptografia::DeCodificar($_POST['IdUsuario'],APP))){
+                    $this->Modelo->ConvertirAsistenteInstructor(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
+                }                
+            }
         }
 
         /**
@@ -84,7 +94,11 @@
          * donde se realiza el update a sólo asistente
          */
         public function CambiarPerfil(){
-            $this->Modelo->CambiaPerfil($_POST['IdUsuario']);
+            if($_POST['IdUsuario']== true AND $_POST['IdUsuario'] != "" AND isset($_POST['IdUsuario'])) {
+                if(is_numeric(NeuralCriptografia::DeCodificar($_POST['IdUsuario'],APP))){
+                    $this->Modelo->CambiaPerfil(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
+                }                
+            }
         }
 
     }
