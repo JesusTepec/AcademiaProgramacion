@@ -5,17 +5,8 @@
 </div>
 <div class="graph">
 <div class="panel-heading" align="center">INSTRUCTORES</div>
-    <div class="col-lg-12">
-        <form>
-            <center><i class="glyphicon glyphicon-question-sign"></i> BUSCAR </center> <input class="col-lg-12" id="Buscar" type="text" onkeyup="HacerBusqueda()"  placeholder="Buscar"/>
-            
-        </form>
-        <br />
-        <br />
-    </div>
     <div class="tables" >
-
-        <table class="table table-bordered" id="TablaBuscar">
+        <table class="table table-bordered table-hover" id="TablaBuscar">
             <thead>
             <tr><center>
                 <th>Nombre</th> <th>Telefono</th> <th>Correo</th> <th>Estado</th><th>Controles</th>
@@ -26,10 +17,51 @@
             {%for Dato in Datos%}
             <tr>
                 <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td> <td>{{Dato.Correo}}</td><td>{{Dato.Status}}</td>
-                <td><a onclick="javascript: fnCambiarPerfil('{{Dato.IdUsuario}}')">Cambiar Perfil </a></td>
+                <td><a onclick="javascript: fnCambiarPerfil('{{Dato.IdUsuario|Cifrado}}')">Cambiar Perfil </a></td>
             </tr>
             {%endfor%}
             </tbody>
         </table>
     </div>
 </div>
+<script>
+    $("#TablaBuscar").dataTable({
+"aoColumnDefs": [{
+'bSortable': false,
+'aTargets': [-1]
+}],
+"oLanguage": {
+"sProcessing": "Procesando...",
+"sLengthMenu": "Mostrar MENU registros",
+"sZeroRecords": "No se encontraron resultados",
+"sEmptyTable": "Ningún dato disponible en esta tabla",
+"sInfo": "Mostrando registros del inicio al final de un total de TOTAL registros",
+"sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+"sInfoFiltered": "(filtrado de un total de MAX registros)",
+"sInfoPostFix": "",
+"sSearch": "Buscar:",
+"sUrl": "",
+"sInfoThousands": ",",
+"sLoadingRecords": "Cargando...",
+"oPaginate": {
+"sFirst": "Primero",
+"sLast": "Último",
+"sNext": "Siguiente",
+"sPrevious": "Anterior"
+},
+"oAria": {
+"sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+}
+},
+"iDisplayLength": 5,
+"aLengthMenu": [
+[5, 10, 25, 50, -1],
+[5, 10, 25, 50, "All"]
+],
+"sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
+"oTableTools": {
+"sSwfPath": "vendor/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+}
+});
+</script>

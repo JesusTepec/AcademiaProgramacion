@@ -46,10 +46,8 @@
          */
         public function ConsultarInstructores(){
             $Datos = $this->Modelo->ConsultarInstructores();     
-            for($i=0;$i<count($Datos);$i++){
-                $Datos[$i]['IdUsuario']=NeuralCriptografia::Codificar($Datos[$i]['IdUsuario'],APP);
-            }
             $Plantilla = new NeuralPlantillasTwig(APP);
+            $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
             $Plantilla->Parametro('Datos',$Datos);
             echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor','Listado','ListaInstructores.html')));
             unset($Datos,$Plantilla);
