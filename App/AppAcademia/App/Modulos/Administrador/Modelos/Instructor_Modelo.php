@@ -73,7 +73,7 @@ class Instructor_Modelo extends Modelo {
     public function eliminarInstructor($IdUsuario = false){
         if($IdUsuario == true and $IdUsuario != ""){
             $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');
-            $SQL->Sentencia('Status', 'Eliminado');
+            $SQL->Sentencia('Status', 'ELIMINADO');
             $SQL->Condicion('IdUsuario', $IdUsuario);
             $SQL->Actualizar();
         }
