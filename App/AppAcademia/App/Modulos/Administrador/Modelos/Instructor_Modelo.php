@@ -66,14 +66,14 @@ class Instructor_Modelo extends Modelo {
     /**
      * @param bool $IdUsuario
      * Metodo Publico
-     * Cambia el perfil del usuario 'Instructor' a 3(Asistente)
-     * recibiendo el ID del usuario a cambiar
+     *  Elimina definitivamente a un Instructor segun el ide
+     * que tenga asociado
      */
 
-    public function CambiaPerfil($IdUsuario = false){
+    public function eliminarInstructor($IdUsuario = false){
         if($IdUsuario == true and $IdUsuario != ""){
             $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');
-            $SQL->Sentencia('IdPerfil', '3');
+            $SQL->Sentencia('Status', 'Eliminado');
             $SQL->Condicion('IdUsuario', $IdUsuario);
             $SQL->Actualizar();
         }

@@ -17,7 +17,7 @@
             {%for Dato in Datos%}
             <tr>
                 <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td> <td>{{Dato.Correo}}</td><td>{{Dato.Status}}</td>
-                <td><a onclick="javascript: fnCambiarPerfil('{{Dato.IdUsuario|Cifrado}}')">Cambiar Perfil </a></td>
+                <td><a class="btn btn-default icon-only" onclick="javascript: fneliminarInstructor('{{Dato.IdUsuario|Cifrado}}')"><i class="fa fa-trash-o"></i></a></td>
             </tr>
             {%endfor%}
             </tbody>
@@ -34,7 +34,7 @@
 "sProcessing": "Procesando...",
 "sLengthMenu": "Mostrar MENU registros",
 "sZeroRecords": "No se encontraron resultados",
-"sEmptyTable": "Ningún dato disponible en esta tabla",
+"sEmptyTable": "Ningï¿½n dato disponible en esta tabla",
 "sInfo": "Mostrando registros del inicio al final de un total de TOTAL registros",
 "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
 "sInfoFiltered": "(filtrado de un total de MAX registros)",
@@ -45,7 +45,7 @@
 "sLoadingRecords": "Cargando...",
 "oPaginate": {
 "sFirst": "Primero",
-"sLast": "Último",
+"sLast": "ï¿½ltimo",
 "sNext": "Siguiente",
 "sPrevious": "Anterior"
 },

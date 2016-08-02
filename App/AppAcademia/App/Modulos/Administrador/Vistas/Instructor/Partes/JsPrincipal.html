@@ -3,20 +3,20 @@
     <script type="text/javascript" src="{{NeuralRutaWebPublico}}/assets/plugins/DataTables/js/jquery.dataTables.js"></script>
 	
 <script>
-    function fnCambiarPerfil(Id){
+    function fneliminarInstructor(Id){
         swal({
-            title: "Cambiar Perfil a Asistente",
-            text: "El usuario seleccionado ahora será sólo asistente",
+            title: "Eliminar instructor.",
+            text: "¿Se eliminará definitivamente al instructor!.",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Si, Cambiar Permiso",
+            confirmButtonText: "Si, eliminar.",
             closeOnConfirm: false
         }, function () {
 
             $.ajax({
                 type: "post",
-                url: "{{NeuralRutaApp}}/Administrador/Instructor/CambiarPerfil",
+                url: "{{NeuralRutaApp}}/Administrador/Instructor/eliminarInstructor",
                 datatype: "html",
                 data: {IdUsuario: Id},
                 beforeSend: function () {
@@ -24,7 +24,7 @@
                 },
                 success: function (data) {
                     ListarInstructores();
-                    swal("Desactivado!", "Se a cambiado el permiso del usuario", "success");
+                    swal("¡Eliminado!", "success");
                 }
             });
         });

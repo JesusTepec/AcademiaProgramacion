@@ -86,15 +86,15 @@
 
         /**
          * Metodo publico
-         * CambiarPerfil()
+         * eliminarInstructor()
          *
-         * Recibe el Id de un Instructor, invoca al metodo del modelo
-         * donde se realiza el update a sólo asistente
+         * Recibe el id de un Instructor para posteriormente invocar al metodo
+         * del modelo el cual cambia el status de el instructor asociado al id
          */
-        public function CambiarPerfil(){
+        public function eliminarInstructor(){
             if($_POST['IdUsuario']== true AND $_POST['IdUsuario'] != "" AND isset($_POST['IdUsuario'])) {
                 if(is_numeric(NeuralCriptografia::DeCodificar($_POST['IdUsuario'],APP))){
-                    $this->Modelo->CambiaPerfil(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
+                    $this->Modelo->eliminarInstructor(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
                 }                
             }
         }
