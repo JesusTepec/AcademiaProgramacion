@@ -3,7 +3,7 @@
 /**
  * Clase: Instructor_Modelo
  */
-class Instructor_Modelo extends Modelo {
+class Instructor_Modelo extends AppSQLConsultas {
 
     /**
      * Metodo: Constructor
@@ -45,7 +45,30 @@ class Instructor_Modelo extends Modelo {
         $Consulta->Condicion('tbl_sistema_usuarios.IdPerfil=3');
         return $Consulta->Ejecutar(false,true);
     }
-    
+
+    /**
+     * @param bool $IdUsuario
+     * @return array
+     *
+     * Metodo Publico
+     * ListarTalleresInstructor();
+     * Recibe el Id de un usuario seleccionado de la vista de instructores
+     * para posteriormente consultar los talleres asociados a el
+     */
+
+    public function ListarTalleresInstructor($IdUsuario = false){
+        if(isset($IdUsuario) == true AND $IdUsuario != ""){
+            $Consulta=new NeuralBDConsultas(APP);
+            $Consulta->Tabla('tbl_talleres');
+            $Consulta->Columnas(implode(',', self::ListarColumnas('tbl_talleres', false, false, APP)));
+            $Consulta->InnerJoin('tbl_instructores_talleres', 'tbl_talleres.IdTaller', 'tbl_instructores_talleres.IdTaller');
+            $Consulta->InnerJoin('tbl_informacion_usuarios', 'tbl_instructores_talleres.IdInformacionInstructor', 'tbl_informacion_usuarios.IdInformacion');
+            $Consulta->InnerJoin('tbl_sistema_usuarios', 'tbl_informacion_usuarios.IdUsuario', 'tbl_sistema_usuarios.IdUsuario');
+            $Consulta->Condicion("tbl_sistema_usuarios.IdUsuario = '$IdUsuario'");
+            return $Consulta->Ejecutar(false,true);
+        }
+    }
+
     /**
      * Metodo Publico
      * ConvertirAsistenteInstructor($IdUsuario = false)
@@ -70,7 +93,7 @@ class Instructor_Modelo extends Modelo {
      * que tenga asociado
      */
 
-    public function eliminarInstructor($IdUsuario = false){
+    public function EliminarInstructor($IdUsuario = false){
         if($IdUsuario == true and $IdUsuario != ""){
             $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');
             $SQL->Sentencia('Status', 'ELIMINADO');
@@ -78,5 +101,7 @@ class Instructor_Modelo extends Modelo {
             $SQL->Actualizar();
         }
     }
+
+
 
 }

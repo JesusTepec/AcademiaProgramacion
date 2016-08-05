@@ -1,0 +1,36 @@
+<div >
+    <br>
+    <br>
+</div>
+<div class="graph">
+    <div class="panel-heading" align="center">Talleres Asociados</div>
+    <div class="tables" >
+        <table class="table table-bordered table-hover" id="TablaBuscar">
+            <thead>
+            <tr><center>
+                <th>Id</th> <th>Periodo</th> <th>Nombre</th> <th>Descripcion</th> <th>Horario</th>
+                <th>Lugar</th> <th>Fecha</th><th>Estado</th>
+            </center>
+            </tr>
+            </thead>
+            <tbody>
+            {%for Dato in TalleresAsociados%}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{Dato.IdPeriodo}}</td>
+                <td>{{Dato.Nombre}}</td>
+                <td>{{Dato.Descripcion}}</td>
+                <td>{{Dato.Horario}}</td>
+                <td>{{Dato.Lugar}}</td>
+                <td>{{Dato.FechaCreacion}}</td>
+                <td>{{Dato.Status}}</td>
+
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $("#TablaBuscar").dataTable();
+</script>

@@ -3,7 +3,22 @@
     <script type="text/javascript" src="{{NeuralRutaWebPublico}}/assets/plugins/DataTables/js/jquery.dataTables.js"></script>
 	
 <script>
-    function fneliminarInstructor(Id){
+    function fnListarTalleres(Id){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Instructor/ListarTalleresInstructor",
+            datatype: "html",
+            data: {IdUsuario: Id},
+            beforeSend: function () {
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+
+    function fnEliminarInstructor(Id){
         swal({
             title: "Eliminar instructor.",
             text: "¿Se eliminará definitivamente al instructor!.",
@@ -16,7 +31,7 @@
 
             $.ajax({
                 type: "post",
-                url: "{{NeuralRutaApp}}/Administrador/Instructor/eliminarInstructor",
+                url: "{{NeuralRutaApp}}/Administrador/Instructor/EliminarInstructor",
                 datatype: "html",
                 data: {IdUsuario: Id},
                 beforeSend: function () {

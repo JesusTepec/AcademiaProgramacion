@@ -52,6 +52,24 @@
             echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor','Listado','ListaInstructores.html')));
             unset($Datos,$Plantilla);
         }
+
+        /**
+         * Metodo publico
+         * ListarTalleresInstructor()
+         *
+         * Genera una vista donde se ven los talleres asociados al instructor
+         */
+
+        public function ListarTalleresInstructor(){
+            if(isset($_POST['IdUsuario']) AND $_POST['IdUsuario'] != "") {
+                $Datos = $this->Modelo->ListarTalleresInstructor(NeuralCriptografia::DeCodificar($_POST['IdUsuario'], APP));
+                $Plantilla = new NeuralPlantillasTwig(APP);
+                $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
+                $Plantilla->Parametro('TalleresAsociados', $Datos);
+                echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Listado', 'ListaTalleres.html')));
+                unset($Consulta,$Plantilla);
+            }
+        }
         
         /**
          * M�todo publico
@@ -91,10 +109,10 @@
          * Recibe el id de un Instructor para posteriormente invocar al metodo
          * del modelo el cual cambia el status de el instructor asociado al id
          */
-        public function eliminarInstructor(){
+        public function EliminarInstructor(){
             if($_POST['IdUsuario']== true AND $_POST['IdUsuario'] != "" AND isset($_POST['IdUsuario'])) {
                 if(is_numeric(NeuralCriptografia::DeCodificar($_POST['IdUsuario'],APP))){
-                    $this->Modelo->eliminarInstructor(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
+                    $this->Modelo->EliminarInstructor(NeuralCriptografia::DeCodificar($_POST['IdUsuario']));
                 }                
             }
         }
