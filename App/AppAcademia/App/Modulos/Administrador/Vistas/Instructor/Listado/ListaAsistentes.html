@@ -1,0 +1,29 @@
+<div >
+    <br>
+    <br>
+</div>
+<div class="graph">
+    <div class="panel-heading" align="center">Talleres Asociados</div>
+    <div class="tables" >
+        <table class="table table-bordered table-hover" id="TablaBuscar">
+            <thead>
+            <tr><center>
+                <th>#</th>
+                <th>Nombre Completo</th>
+            </center>
+            </tr>
+            </thead>
+            <tbody>
+            {%for Dato in ListaAsistentes%}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $("#TablaBuscar").dataTable();
+</script>

@@ -16,8 +16,11 @@
             <tbody>
             {%for Dato in Datos%}
             <tr>
-                <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td> <td>{{Dato.TelefonoMovil1}}</td> <td>{{Dato.Correo}}</td><td>{{Dato.Status}}</td>
-                <td><a class="btn btn-default icon-align-center" onclick="javascript: fnListarTalleres('{{Dato.IdUsuario|Cifrado}}')">Asociados</a></td>
+                <td>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</td>
+                <td>{{Dato.TelefonoMovil1}}</td>
+                <td>{{Dato.Correo}}</td>
+                <td>{{Dato.Status}}</td>
+                <td><a class="btn btn-default icon-align-center" onclick="javascript: fnListarTalleres('{{Dato.IdUsuario|Cifrado}}')"><i class="fa fa-book" aria-hidden="true"></i></a></td>
                 <td><a class="btn btn-default icon-align-center" onclick="javascript: fnEliminarInstructor('{{Dato.IdUsuario|Cifrado}}')"><i class="fa fa-trash-o"></i></a></td>
             </tr>
             {%endfor%}

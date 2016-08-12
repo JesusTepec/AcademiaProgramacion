@@ -67,7 +67,25 @@
                 $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
                 $Plantilla->Parametro('TalleresAsociados', $Datos);
                 echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Listado', 'ListaTalleres.html')));
-                unset($Consulta,$Plantilla);
+                unset($Datos,$Plantilla);
+            }
+        }
+
+        /**
+         * Metodo publico
+         * ListarAsistentesTaller
+         *
+         * Genera una vista de los asistentes asociados a un Taller
+         */
+        
+        public function ListarAsistentesTaller(){
+            if(isset($_POST['IdTaller']) AND $_POST['IdTaller'] != "") {
+                $Datos = $this->Modelo->ListarAsistentesTaller(NeuralCriptografia::DeCodificar($_POST['IdTaller'],APP));
+                $Plantilla = new NeuralPlantillasTwig(APP);
+                $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
+                $Plantilla->Parametro('ListaAsistentes', $Datos);
+                echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Listado', 'ListaAsistentes.html')));
+                unset($Datos, $Plantilla);
             }
         }
         

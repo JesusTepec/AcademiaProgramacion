@@ -18,6 +18,21 @@
         });
     }
 
+    function fnListaDeAsistentes(Id){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Instructor/ListarAsistentesTaller",
+            datatype: "html",
+            data: {IdTaller: Id},
+            beforeSend: function(){
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data){
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+
     function fnEliminarInstructor(Id){
         swal({
             title: "Eliminar instructor.",

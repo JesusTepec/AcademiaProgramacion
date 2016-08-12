@@ -9,7 +9,7 @@
             <thead>
             <tr><center>
                 <th>Id</th> <th>Periodo</th> <th>Nombre</th> <th>Descripcion</th> <th>Horario</th>
-                <th>Lugar</th> <th>Fecha</th><th>Estado</th>
+                <th>Lugar</th> <th>Fecha</th><th>Estado</th><th>Asistentes</th>
             </center>
             </tr>
             </thead>
@@ -24,6 +24,11 @@
                 <td>{{Dato.Lugar}}</td>
                 <td>{{Dato.FechaCreacion}}</td>
                 <td>{{Dato.Status}}</td>
+                <td>
+                    <a class="btn btn-default icon-align-center" onclick="javascript: fnListaDeAsistentes('{{Dato.IdTaller|Cifrado}}')">
+                        <i class="fa fa-list-ul" aria-hidden="true"></i>
+                    </a>
+                </td>
 
             </tr>
             {%endfor%}

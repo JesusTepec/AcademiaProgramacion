@@ -70,6 +70,28 @@ class Instructor_Modelo extends AppSQLConsultas {
     }
 
     /**
+     * @param bool $IdTaller
+     * @return array
+     *
+     * Metodo Publico
+     * ListarAsistentesTaller
+     * Recibe el Id de un Taller seleccionado de la vista correspondiente
+     * para consultar los asistentes a este mismo.
+     */
+
+    public function ListarAsistentesTaller($IdTaller = false){
+        if(isset($IdTaller)== true AND $IdTaller != ""){
+            $Consulta=new NeuralBDConsultas(APP);
+            $Consulta->Tabla('tbl_talleres_asistentes');
+            $Consulta->Columnas("Nombres,ApellidoPaterno,ApellidoMaterno");
+            $Consulta->InnerJoin('tbl_informacion_usuarios','tbl_talleres_asistentes.IdInformacionAsistente',
+                'tbl_informacion_usuarios.IdUsuario');
+            $Consulta->Condicion("tbl_talleres_asistentes.IdTaller = '$IdTaller'");
+            return $Consulta->Ejecutar(false, true);
+        }
+    }
+
+    /**
      * Metodo Publico
      * ConvertirAsistenteInstructor($IdUsuario = false)
      *
