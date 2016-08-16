@@ -17,7 +17,7 @@
     function AgregarTaller(){
         $.ajax({
             type: "post",
-            url: "{{NeuralRutaApp}}/Administrador/Taller/frmAgregar",
+            url: "{{NeuralRutaApp}}/Administrador/Taller/CargarCmb",
             datatype: "html",
             beforeSend: function () {
                 $("#AreaContenido").html('<div class="spinner"></div>');
