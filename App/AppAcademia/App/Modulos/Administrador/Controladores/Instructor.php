@@ -67,7 +67,7 @@
                 $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
                 $Plantilla->Parametro('TalleresAsociados', $Datos);
                 echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Listado', 'ListaTalleres.html')));
-                unset($Consulta,$Plantilla);
+                unset($Datos,$Plantilla);
             }
         }
         
@@ -116,5 +116,64 @@
                 }                
             }
         }
-
+        
+        public function VistaAgregarUsuario(){
+            $Validacion = new NeuralJQueryFormularioValidacion(true, true, false);
+            $Validacion->Requerido('Usuario', 'El Campo es Requerido');
+            $Validacion->Requerido('Password', 'El Campo es Requerido');
+            $Validacion->Requerido('Password2', 'El Campo es Requerido');
+            $Validacion->CampoIgual('Password2','Password','Contraseña diferente');
+            $Validacion->CantMinCaracteres('Usuario',4,'Minimo 4 caracteres');
+            $Validacion->CantMaxCaracteres('Usuario',255,'Maximo 255 caracteres');
+            $Validacion->CantMinCaracteres('Password',4,'Minimo 4 caracteres');
+            $Validacion->CantMaxCaracteres('Password',255,'Maximo 255 caracteres');
+            $Validacion->CantMinCaracteres('Password2',4,'Minimo 4 caracteres');
+            $Validacion->CantMaxCaracteres('Password2',255,'Maximo 255 caracteres');
+            echo $Validacion->Constructor('FORM');
+            $Plantilla = new NeuralPlantillasTwig(APP);
+            echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Agregar', 'AgregarUsuario.html')));
+            //echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Instructor', 'Agregar', 'Prueba2.html')));
+            unset($ConsultaAsitentes,$Plantilla);
+        }
+        
+        public function AgregarUsuario(){
+            $DatosPost=AppPost::LimpiarInyeccionSQL(AppPost::FormatoEspacio($_POST));
+            if( isset($DatosPost['Usuario']) AND isset($DatosPost['Password']) AND isset($DatosPost['Password2']) ){
+                if($DatosPost['Password']===$DatosPost['Password2'].'dd'){
+                    echo 'iguales <br>';
+                    Ayudas::print_r($DatosPost);
+                }else{
+                    echo 
+                    '<script language="JavaScript">';
+                   echo '     function ListarInstructores() {
+                            $.ajax({
+                                url:"{{NeuralRutaApp}}/Administrador/Instructor/ConsultarInstructores",
+                                type:"post",
+                                datatype:"html",
+                                success:function (data) {
+                                    $("#AreaContenido").html(data);
+                                }
+                            });
+                        }';
+                    echo '</script>';
+                    echo '<script type="text/javascript">';
+                    echo "ListarInstructores();";
+                    echo "</script>";
+                    //echo "<script language='JavaScript'>alert('Grabacion Correcta');</script>"; 
+                    
+                    //echo '<script type="text/javascript">';
+                    //echo "ListarInstructores();";
+                    //echo "</script>";
+                    //echo "<script language='JavaScript'>alert('Grabacion Correcta');</script>"; 
+                }
+                
+            }else{
+                
+            }
+            unset($DatosPost);
+        }
+        
+        
     }
+    
+    

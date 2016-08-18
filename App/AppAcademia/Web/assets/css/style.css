@@ -2671,7 +2671,7 @@ div#home {
     padding: 1em 0 0;
 }
 .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 15px !important;
+    padding: 5px !important;
     font-size: 0.85em;
     color: #999;
     border-top: none !important;
@@ -4046,10 +4046,10 @@ th {
 }
 .btn {
     cursor: pointer;
-    margin: 10px;
+    margin: 3px;
     border-radius: 0;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 2px 2px;
     font-size: 17px;
 	}
 .inner-grid-button {

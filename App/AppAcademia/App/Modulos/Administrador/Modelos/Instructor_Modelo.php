@@ -101,6 +101,51 @@ class Instructor_Modelo extends AppSQLConsultas {
             $SQL->Actualizar();
         }
     }
+    
+    /**
+     * @param array $Array
+     * Metodo Publico InsertarUsuario
+     * Recibe los datos en un arreglo para registrar un usuario
+     * */  
+    public function InsertarUsuario($Array = false){
+        $SQL = new NeuralBDGab(APP, 'tbl_sistema_usuarios');
+        $SQL->Sentencia('IdPerfil','2');
+        $SQL->Sentencia('Usuario', $Array['Usuario']);
+        $SQL->Sentencia('Password',hash('sha256',$Array['Password']));
+        $SQL->Insertar();
+    }
+    
+    /**
+     * @param array $Array
+     * Metodo Publico BuscarUsuario
+     * Recibe los datos en un arreglo para buscar si un usuario esta registrado y devuelve el Id
+     * */  
+    public function BuscarUsuario($Array=false){
+        $Consulta = new NeuralBDConsultas(APP);
+        $Consulta->Tabla('tbl_sistema_usuarios');
+        $Consulta->Columnas("tbl_sistema_usuarios.IdUsuario");
+        $Consulta->Condicion("tbl_sistema_usuarios.Usuario = '".$Array['Usuario']."'");
+        return $Consulta->Ejecutar(false,true);
+    }
+    
+    /**
+     * @param array $Array, interger $IdUsuario
+     * Metodo Publico InsertarInformacionUsuario
+     * Registra la informacion de un usuario y lo asocia a su Id
+     * */ 
+    public function InsertarInformacionUsuario($Array = false,$IdUsuario= false){
+        $SQL = new NeuralBDGab(APP, 'tbl_informacion_usuarios');
+        $SQL->Sentencia('IdUsuario',$IdUsuario);
+        $SQL->Sentencia('Nombres',$Array['Nombres']);
+        $SQL->Sentencia('ApellidoPaterno',$Array['ApellidoPaterno']);
+        $SQL->Sentencia('ApellidoMaterno',$Array['ApellidoMaterno']);
+        $SQL->Sentencia('Cargo',$Array['Cargo']);
+        $SQL->Sentencia('Direccion',$Array['Direccion']);
+        $SQL->Sentencia('Correo',$Array['Correo']);
+        $SQL->Sentencia('TelefonoFijo1',$Array['Telefono']);
+        $SQL->Sentencia('TelefonoMovil1',$Array['Celular']);
+        $SQL->Insertar();
+    }
 
 
 

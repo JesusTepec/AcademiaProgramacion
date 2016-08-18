@@ -1,0 +1,85 @@
+<h3 class="inner-tittle two">Vertical Tabs </h3>
+<div class="graph">
+
+    <div class="tabs">
+  <nav class="second"> <a>Tab #1</a> <a>Tab #2</a> <a>Tab #3</a> </nav>
+  <div class="context">
+	<div class="panel-heading" align="center">REGISTRAR USUARIO</div>
+		   <form class="form-horizontal" action="{{NeuralRutasApp.RutaURL}}Catalogo/VerificarCatalogo" id="FORM" name="FORM" method="POST">
+                    <div class="form-group">
+						<label class="col-md-2 control-label">Usuario</label>
+						<div class="col-md-8">
+							<div class="input-group">							
+								<span class="input-group-addon">
+									<i class="fa fa-user"></i>
+								</span>
+								<input type="text" id="Usuario" name="Usuario" class="form-control1 icon" placeholder="Usuario">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Contraseña</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-key"></i>
+								</span>
+								<input type="password" id="Password" name="Password" class="form-control1 icon" placeholder="Contraseña">
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+						<label class="col-md-2 control-label">Repetir Contraseña</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-key"></i>
+								</span>
+								<input type="password" id="Password2" name="Password2" class="form-control1 icon" placeholder="Repetir Contraseña">
+							</div>
+						</div>
+					</div>
+					
+                    <div class="form-actions" style="text-align:center" >
+                        <button type="submit" class="btn btn-large green">Aceptar</button>
+                        <a href="javascript:window.history.back();">
+                        <button type="button" class="btn btn-large red" >Cancelar</button>
+                   		</a>
+				   </div>
+				    
+				</form>
+                <br />
+                <br />
+                <br />
+                
+                </div>
+  <div class="context">
+	<p>s eu quam nec, congue rutrum felis. Morbi rhoncus metus a diam mattis, vel lacinia lectus ultricies. Quisque aliquet magna justo, quis pretium purus vulputate sit amet. Vivamus vehicula nisl eu sollicitudin efficitur. Curabitur egestas, felis vel tempus efficitur, felis nibh fermentum nulla, at gravida risus mauris sed sapien. Donec lobortis mi convallis tortor iaculis, sit amet vulputate libero mollis. Cras sagittis ligula eget est sodales tempor.</p>
+  </div>
+  <div class="context">
+	<p>Content #3</p>
+	<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse tempor accumsan purus a rutrum. Nam congue tempor dui, vel auctor dolor tincidunt id. Proin fringilla consectetur urna. Fusce nec sodales turpis, eu rhoncus enim. Pellentesque pretium, dui et feugiat venenatis, sapien augue molestie quam, ac vulputate arcu quam et mauris. Duis lectus mi, congue ac tortor vel, maximus venenatis sem. Nam eget cursus sapien, sit amet rhoncus lacus. Vestibulum est justo, scelerisque ac erat eu, fermentum suscipit tellus. Aliquam velit nisi, feugiat ut arcu et, finibus efficitur lectus.</p>
+	<p>Nulla aliquam dapibus nunc, sed convallis sem semper sit amet. Mauris et ullamcorper lorem. Donec volutpat egestas massa, vitae porttitor mi venenatis sit amet. Nulla condimentum fermentum risus non mattis. Mauris ut posuere erat. Duis vel ante sit amet augue blandit facilisis. Nulla congue turpis at imperdiet porta. Nullam quis aliquet augue. Duis et arcu in augue fringilla sodales. Aliquam pulvinar elit non iaculis egestas. Nam risus enim, malesuada id augue a, sagittis pharetra quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend, ligula eget ultrices venenatis, metus neque finibus tortor, sit amet venenatis turpis nibh et odio.</p>
+  </div>
+</div>
+<script>
+$(function() {
+  $('.tabs nav a').on('click', function() {
+	show_content($(this).index());
+  });
+  
+  show_content(0);
+
+  function show_content(index) {
+	// Make the content visible
+	$('.tabs .context.visible').removeClass('visible');
+	$('.tabs .context:nth-of-type(' + (index + 1) + ')').addClass('visible');
+
+	// Set the tab to selected
+	$('.tabs nav.second a.selected').removeClass('selected');
+	$('.tabs navnav.second a:nth-of-type(' + (index + 1) + ')').addClass('selected');
+  }
+});
+</script>
+</div>

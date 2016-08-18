@@ -1,8 +1,82 @@
 	<!-- DataTables -->
+<script>
+function DataTablesEspañol(IdTabla){
+    // Init DataTables
+    $(IdTabla).dataTable({
+        "aoColumnDefs": [{
+            'bSortable': false,
+            'aTargets': [-1]
+        }],
+        "oLanguage": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        "iDisplayLength": 5,
+        "aLengthMenu": [
+        [5, 10, 25, 50, -1],
+        [5, 10, 25, 50, "Todos"]
+        ],
+        "sDom": '<"dt-panelmenu clearfix"lfr>t<"dt-panelfooter clearfix"ip>',
+        "oTableTools": {
+        "sSwfPath": "vendor/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+        }
+        });
+    }
+</script>
     <link rel="stylesheet" href="{{NeuralRutaWebPublico}}/assets/plugins/DataTables/css/jquery.dataTables.css" type='text/css' />
     <script type="text/javascript" src="{{NeuralRutaWebPublico}}/assets/plugins/DataTables/js/jquery.dataTables.js"></script>
 	
 <script>
+    function AgregarVistaInstructor(){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Instructor/VistaAgregarUsuario",
+            datatype: "html",
+            beforeSend: function () {
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+    
+    function AgregarDatosUsuario(Usuario){
+        $.ajax({
+            type: "post",
+            url: "{{NeuralRutaApp}}/Administrador/Instructor/AgregarUsuario",
+            datatype: "html",
+            data:{Usuario},
+            beforeSend: function () {
+                $("#AreaContenido").html('<div class="spinner"></div>');
+            },
+            success: function (data) {
+                $("#AreaContenido").html(data);
+            }
+        });
+    }
+    
+    
     function fnListarTalleres(Id){
         $.ajax({
             type: "post",
@@ -46,33 +120,6 @@
 
     }
 
-    function HacerBusqueda()
-		{
-			var tableReg = document.getElementById('TablaBuscar');
-			var searchText = document.getElementById('Buscar').value.toLowerCase();
-			var cellsOfRow="";
-			var found=false;
-			var compareWith="";
-			for (var i = 1; i < tableReg.rows.length; i++)
-			{
-				cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-				found = false;
-				for (var j = 0; j < cellsOfRow.length && !found; j++)
-				{
-					compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-					if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
-					{
-						found = true;
-					}
-				}
-				if(found)
-				{
-					tableReg.rows[i].style.display = '';
-				} else {
-					tableReg.rows[i].style.display = 'none';
-				}
-			}
-		}
     function ListarInstructores() {
         $.ajax({
           url:"{{NeuralRutaApp}}/Administrador/Instructor/ConsultarInstructores",
@@ -85,19 +132,7 @@
     }
     ListarInstructores();
     
-    function AgregarInstructor(){
-        $.ajax({
-            type: "post",
-            url: "{{NeuralRutaApp}}/Administrador/Instructor/frmAgregar",
-            datatype: "html",
-            beforeSend: function () {
-                $("#AreaContenido").html('<div class="spinner"></div>');
-            },
-            success: function (data) {
-                $("#AreaContenido").html(data);
-            }
-        });
-    }
+    
 
 
     

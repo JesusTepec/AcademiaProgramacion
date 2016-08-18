@@ -1,9 +1,8 @@
-<div >
-    <a href="javascript: AgregarInstructor();" class="a_demo_four" position="absolute" top="100px" right="500px">Registrar un Nuevo Instructor</a>
-    <br>
-    <br>
-</div>
 <div class="graph">
+<div style="text-align:right">
+    <a onclick="javascript:AgregarVistaInstructor();" class="btn green">Registrar un Nuevo Instructor</a>
+</div>
+
 <div class="panel-heading" align="center">INSTRUCTORES</div>
     <div class="tables" >
         <table class="table table-bordered table-hover" id="TablaBuscar">
@@ -26,5 +25,5 @@
     </div>
 </div>
 <script>
-    $("#TablaBuscar").dataTable();
+    DataTablesEspañol('#TablaBuscar');
 </script>
