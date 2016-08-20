@@ -52,6 +52,7 @@ class Taller extends Controlador {
         $Consulta = $this->Modelo->ConsultarTalleres();
         $Plantilla = new NeuralPlantillasTwig(APP);
         $Plantilla->Parametro('Datos', $Consulta);
+        $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
         echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Taller', 'Listado', 'Listado.html')));
         unset($Consulta,$Plantilla);
     }
@@ -65,27 +66,44 @@ class Taller extends Controlador {
     public function Desactivar(){
         if($_POST['IdTaller']== true and $_POST['IdTaller'] != "") {
             //validar existencia, no vacio, cifrar el id, y decifrar
-            $this->Modelo->DesativarTalleres($_POST['IdTaller']);
+            $this->Modelo->DesativarTalleres(NeuralCriptografia::DeCodificar($_POST['IdTaller']));
         }
     }
 
     /**
      * Metodo Publico
-     * frmAgregar()
+     * CargarCmb()
      *
      * muestra la vista para agregar con informacion de periodo y instructores
      *
      * @throws NeuralException
      */
-    public function frmAgregar(){
+    public function CargarCmb(){
         $ConsultaPeriodo = $this->Modelo->ConsultaPeriodo();
         $ConsultaInstructores = $this->Modelo->ConsultaInstructores();
         $Plantilla = new NeuralPlantillasTwig(APP);
         $Plantilla->Parametro('DatosPeriodo', $ConsultaPeriodo);
         $Plantilla->Parametro('DatosInstructores', $ConsultaInstructores);
+        $Plantilla->Filtro('Cifrado',function($parametros){return NeuralCriptografia::Codificar($parametros);});
+        $Plantilla->Parametro('Key',NeuralCriptografia::Codificar(AppFechas::ObtenerFechaActual(), APP));
         echo $Plantilla->MostrarPlantilla(AppPlantilla::Separador(array('Taller', 'Agregar', 'frmAgregar.html')));
         unset($Consulta,$Plantilla);
     }
-    
 
-}
+    /**
+     * Metodo Publico
+     * frmAgregarTaller()
+     *
+     * Agregamos un nuevo taller
+     */
+    public function frmAgregarTaller()
+    {
+        
+        if (isset($_POST) and NeuralCriptografia::DeCodificar($_POST['Key'], APP) == AppFechas::ObtenerFechaActual()) {
+            unset($_POST['Key']);
+            $this->Modelo->AgregarTaller(NeuralCriptografia::DeCodificar($_POST['IdPeriodo']),NeuralCriptografia::DeCodificar($_POST['IdInformacion']),$_POST);
+            $this->Listar();
+        }
+    }
+
+    }

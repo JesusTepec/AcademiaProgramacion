@@ -46,7 +46,7 @@
                     <td>{{ Dato.FechaCreacion }}</td>
                     <td>{{ Dato.Status }}</td>
                     <td><a data-toggle="modal" data-target="#frmModalModificar">Modificar</a>/<a
-                            onclick="javascript: fnDesactivar('{{Dato.IdTaller}}')">Desactivar </a></td>
+                            onclick="javascript: fnDesactivar('{{Dato.IdTaller|Cifrado}}')">Desactivar </a></td>
                 </tr>
                 {% endfor %}
                 </tbody>

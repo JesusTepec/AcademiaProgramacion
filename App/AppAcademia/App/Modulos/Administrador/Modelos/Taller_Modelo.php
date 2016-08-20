@@ -24,13 +24,10 @@ class Taller_Modelo extends AppSQLConsultas {
         $Consulta->Tabla('tbl_talleres');
         $Consulta->Columnas("tbl_periodo.IdPeriodo, tbl_periodo.Nombre As nmPeriodo, tbl_informacion_usuarios.IdInformacion, tbl_informacion_usuarios.Nombres As nmInfUsuario, tbl_informacion_usuarios.ApellidoPaterno As apPInfUsuario, tbl_informacion_usuarios.ApellidoMaterno As apMInfUsuario, tbl_talleres.IdTaller, tbl_talleres.Nombre, tbl_talleres.Descripcion, tbl_talleres.Horario, tbl_talleres.Lugar, tbl_talleres.FechaCreacion, tbl_talleres.Status");
         $Consulta->InnerJoin('tbl_periodo', 'tbl_talleres.IdPeriodo','tbl_periodo.IdPeriodo');
-
         $Consulta->InnerJoin('tbl_instructores_talleres', 'tbl_talleres.IdTaller','tbl_instructores_talleres.IdTaller');
-        $Consulta->InnerJoin('tbl_informacion_usuarios', 'tbl_instructores_talleres.IdIformacionInstructor','tbl_informacion_usuarios.IdInformacion');
+        $Consulta->InnerJoin('tbl_informacion_usuarios', 'tbl_instructores_talleres.IdInformacionInstructor','tbl_informacion_usuarios.IdInformacion');
         $Consulta->InnerJoin('tbl_sistema_usuarios', 'tbl_informacion_usuarios.IdUsuario','tbl_sistema_usuarios.IdUsuario');
         $Consulta->InnerJoin('tbl_sistema_usuarios_perfil', 'tbl_sistema_usuarios.IdPerfil','tbl_sistema_usuarios_perfil.IdPerfil');
-
-
         $Consulta->Condicion("tbl_talleres.Status = 'ACTIVO'");
         $Consulta->Ordenar('tbl_talleres.FechaCreacion' , 'DESC');
         return $Consulta->Ejecutar(false , true);
@@ -80,13 +77,28 @@ class Taller_Modelo extends AppSQLConsultas {
      */
     public function DesativarTalleres($IdTaller = false){
         if($IdTaller == true and $IdTaller != ""){
-            $SQL = new NeuralBDGab(APP, 'tbl_Talleres');
+            $SQL = new NeuralBDGab(APP, 'tbl_talleres');
             $SQL->Sentencia('Status', 'DESACTIVADO');
             $SQL->Condicion('IdTaller', $IdTaller);
             $SQL->Actualizar();
         }
     }
-
+    public function AgregarTaller($IdPeriodo = false, $IdInformacionInstructor = false, $Datos = false){
+     $FechaActual=date("Y-m-d H:i:s");
+        Ayudas::print_r($Datos['Horario']);
+        exit();
+        if ($IdPeriodo == true and $IdPeriodo != "" and $IdInformacionInstructor == true and $IdInformacionInstructor != "" and $Datos =true and $Datos !=""){
+            $SQL = new NeuralBDGab(APP,'tbl_talleres');
+            $SQL->Sentencia('IdPeriodo', $IdPeriodo);
+            $SQL->Sentencia('Nombre', $Datos['Nombre']);
+            $SQL->Sentencia('Descripcion', $Datos['descripcion']);
+            $SQL->Sentencia('Horario', $Datos['Horario']);
+            $SQL->Sentencia('Lugar', $Datos['lugar']);
+            $SQL->Sentencia('FechaCreacion', $FechaActual);
+            $SQL->Sentencia('Status', 'ACTIVO');
+            $SQL->Insertar();
+        }
+    }
     /**
      * Metodo Publico
      * ActualizarTaller()

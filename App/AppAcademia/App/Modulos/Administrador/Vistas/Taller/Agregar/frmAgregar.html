@@ -1,48 +1,78 @@
 <div class="panel panel-primary">
     <div class="panel-heading" align="center">LISTADO DE TALLERES</div>
-    <div class="panel-body">
-        <div class="grid-1">
-            <div class="form-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control1" id="focusedinput" placeholder="Default Input">
-                        </div>
+    <form id="frmAgregar" name="frmAgregar" role="form" action="{{NeuralRutaApp}}/Administrador/Taller/frmAgregarTaller"
+          method="POST">
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group">
+                    <label for="IdPeriodo" class="col-md-4 control-label">Periodo</label>
+                    <div class="col-md-8">
+                        <select name="IdPeriodo" id="IdPeriodo" class="form-control1">
+                            <option >Seleccione Periodo</option>
+                            {% for Dato in DatosPeriodo %}
+                            <option value="{{ Dato.IdPeriodo|Cifrado}}">{{Dato.Nombre}}</option>
+                            {% endfor %}
+                        </select>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control1" id="focusedinput2" placeholder="Default Input">
-                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="Nombre" class="col-md-4 control-label">Nombre del taller</label>
+                    <div class="col-md-8">
+                        <input type="text" id="Nombre" name="Nombre" class="form-control"
+                               placeholder="Nombre del taller" required autofocus>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Password</label>
-                        <div class="col-md-10">
-
-                                <select name="selector1" id="selector1" class="form-control1" >
-                                    <option selected value="">Selecione Un Periodo</option>
-                                    {% for Dato in DatosPeriodo %}
-                                    <option>{{Dato.Nombre}}</option>
-                                    {% endfor %}
-                                </select>
-                                                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="IdInformacion" class="col-md-4 control-label">Instructores</label>
+                    <div class="col-md-8">
+                        <select name="IdInformacion" id="IdInformacion" class="form-control1">
+                            <option>Seleccione un Instructor</option>
+                            {% for Dato in DatosInstructores %}
+                            <option value="{{Dato.IdInformacion|Cifrado}}">{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</option>
+                            {% endfor %}
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Password</label>
-                        <div class="col-md-10">
-                                <select name="selector2" id="selector2" class="form-control1">
-                                    <option selected value="">Selecione Un Periodo</option>
-                                    {% for Dato in DatosInstructores %}
-                                    <option>{{Dato.Nombres}} {{Dato.ApellidoPaterno}} {{Dato.ApellidoMaterno}}</option>
-                                    {% endfor %}
-                                </select>
-                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="horario" class="col-md-4 control-label">Horario</label>
+                    <div class="col-md-8">
+                        <input type="text" id="Horario" name="Horario" class="form-control"
+                               placeholder="Nombre del taller" required autofocus>
                     </div>
-                </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="lugar" class="col-md-4 control-label">Lugar del taller</label>
+                    <div class="col-md-8">
+                        <input type="text" id="lugar" name="lugar" class="form-control" placeholder="Lugar del taller"
+                               required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="descripcion" class="col-md-4 control-label">Descripcion</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" rows="3" id="descripcion" name="descripcion"
+                                  placeholder="Describa el taller" required autofocus></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" align="center">
+                <div class="form-group">
+                    <input type="hidden" name='Key' id="Key" value="{{Key}}">
+                    <button type="submit" class="btn btn-default">Agregar</button>
+                </div>
             </div>
         </div>
-    </div>
+
+    </form>
 </div>
 
